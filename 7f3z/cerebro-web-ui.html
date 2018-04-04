@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Cerebro Web UI | Cerebro Data User Documentation</title>
+<link rel="stylesheet" href="theme/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="theme/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+<link rel="stylesheet" href="theme/css/asciidoctor.css">
+<link rel="stylesheet" href="theme/css/custom.css">
+<link rel="stylesheet" href="theme/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="theme/css/theme-green.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="theme/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="theme/js/toc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<script src="theme/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Cerebro Data User Guides" href="http://localhost:4400/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img src="assets/images/cerebro-wordmark-white.png" /></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://cerebrodata.com" target="_blank">Cerebro Data</a></li>
+                
+                
+                
+                <li><a href="https://blog.cerebrodata.com/" target="_blank">Blog</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="mydoc_introduction.html">Jekyll Documentation Theme</a></li>
+                        
+                        
+                        
+                        <li><a href="p1_landing_page.html">Product 1</a></li>
+                        
+                        
+                        
+                        <li><a href="p2_landing_page.html">Product 2</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                <!-- comment out this block if you want to hide search -->
+                <li class="dropdown">
+
+                  <div id="search-demo-container">
+                      <form action="/search" method="GET">
+                      <input type="text" name="q" id="search-input" placeholder="Search the docs...">
+                      </form>
+                  </div>
+                  <!-- end search -->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav affix">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a href="#">Introduction</a>
+      <ul>
+          
+          
+          
+          <li><a href="product-overview">Product Overview</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cdas-overview">CDAS Overview</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cerebro-catalog-overview">Cerebro Catalog Overview</a> </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a href="#">Installation</a>
+      <ul>
+          
+          
+          
+          <li><a href="install">Installation Guide</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="advanced-install">Advanced Installation Option</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="kerberos-cluster-setup">Kerberos</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="secure-cerebro-rest-api-ldap">LDAP Authentication</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="secure-cerebro-rest-api-oath">OAuth Authentication</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="secure-deployment-manager-rest-api">Deployment Manager REST Security</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cluster-types">Cluster Types</a> </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a href="#">Administration</a>
+      <ul>
+          
+          
+          
+          <li><a href="auditing">Auditing</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cluster-administration">Cluster Administration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cluster-sizing">Cluster Sizing</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cluster-launch-plugin-api">Cluster Launch API</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="cerebro-database-cli">Database CLI</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="ip-address-management">IP Address Management</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="kubernetes-dashboard-quickstart">Kubernetes Dashboard Quickstart</a> </li>
+          
+          
+          
+          
+          
+          
+          <li class="active"><a href="cerebro-web-ui">Web UI</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a href="#">Integration</a>
+      <ul>
+          
+          
+          
+          <li><a href="cdas-cdh-integration">CDH Integration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="client-integration">Client Integration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="emr-integration">EMR Integration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="pycerebro">Native Python Integration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="tableau-web-data-connector">Tableau Integration</a> </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a href="#">Developers</a>
+      <ul>
+          
+          
+          
+          <li><a href="cdas-authentication">Authentication</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="docker-quickstart">Docker Quickstart</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="catalog-rest-api">Catalog API</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="client-configs">Client Configuration</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="data-types">Supported Data Types</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="extending-cdas">Extending CDAS</a> </li>
+          
+          
+          
+          
+          
+          
+          <li><a href="supported-sql">Supported SQL</a> </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a href="#">Release Information</a>
+      <ul>
+          
+          
+          
+          <li><a href="release-notes">Release Notes</a> </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+    
+    <li>
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2', title: 'On This Page' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+    </li>
+    
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-content">
+
+   
+
+    
+
+
+    
+
+  <h1 id="cerebro-web-ui">Cerebro Web UI</h1>
+<p>The Cerebro Web UI provides a read only user interface to:</p>
+
+<ul>
+  <li>View your account information</li>
+  <li>Find and understand datasets</li>
+  <li>Understand your access to datasets and columns</li>
+  <li>Inspect group permissions on any dataset for which you are an admin and have all privileges</li>
+</ul>
+
+<p>This section included the following topics:</p>
+
+<ul>
+  <li><a href="#accessing-the-ui">Accessing the UI</a></li>
+  <li><a href="#supported-browsers">Supported Browsers</a></li>
+  <li><a href="#logging-in">Logging in</a></li>
+  <li><a href="#account-details">Account Details</a></li>
+  <li><a href="#about-dialog">About Dialog</a></li>
+  <li><a href="#copying-your-access-token">Copying your token</a></li>
+  <li><a href="#datasets-page">Datasets Page</a>
+    <ul>
+      <li><a href="#searching-and-filtering-datasets">Searching and Filtering</a></li>
+      <li><a href="#dataset-details">Dataset details</a></li>
+      <li><a href="#dataset-preview">Preview a dataset</a></li>
+      <li><a href="#get-started-snippets">Get started snippets</a></li>
+    </ul>
+  </li>
+  <li><a href="#datasets-with-errors">Datasets with Errors</a></li>
+  <li><a href="#admin-features">Admin Features</a>
+    <ul>
+      <li><a href="#review-group-access-on-datasets">Review Group Access on Datasets</a></li>
+      <li><a href="#review-group-access-on-a-dataset-schema">Review Group Access on a Dataset Schema</a></li>
+    </ul>
+  </li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+
+<h2 id="accessing-the-web-ui">Accessing the Web UI</h2>
+<p>To access the Web UI:</p>
+
+<ol>
+  <li>Set up a Cerebro cluster.</li>
+  <li>
+    <p>Determine the created endpoints.</p>
+
+    <p>For example, run: <code class="highlighter-rouge">cerebro_cli clusters endpoints &lt;cluster_id&gt;</code>.</p>
+  </li>
+  <li>
+    <p>Find the host and port of the component named <code class="highlighter-rouge">cerebro_web:webui</code>.</p>
+  </li>
+  <li>In a web browser, access <code class="highlighter-rouge">http://&lt;host&gt;:&lt;port&gt;</code> (or <code class="highlighter-rouge">https://&lt;host&gt;:&lt;port&gt;</code> if
+using SSL).</li>
+</ol>
+
+<h2 id="supported-browsers">Supported Browsers</h2>
+<p>The Cerebro UI is supported on the latest versions of the following browsers:</p>
+
+<ul>
+  <li>Chrome</li>
+  <li>Firefox</li>
+  <li>Microsoft Edge</li>
+  <li>Safari</li>
+</ul>
+
+<h2 id="logging-in">Logging in</h2>
+<p>Use the login screen to access the Web UI. The login screen is configured to provide login
+options, depending upon your cluster configuration. The login options include:</p>
+
+<ul>
+  <li><strong>Token login</strong> - Log in with Cerebro, JWT, and SSO tokens (if Cerebro is configured
+to use them).</li>
+  <li><strong>Username/password login</strong> - Log in with username and password if the cluster is
+configured to</li>
+  <li>authenticate with LDAP.</li>
+  <li><strong>OAuth login</strong> - Log in with OAuth if the cluster is configured
+for it and there is an auth server set up to handle it.</li>
+</ul>
+
+<h2 id="using-the-web-ui">Using the Web UI</h2>
+
+<h3 id="account-details">Account Details</h3>
+
+<p>After logging in, you land on the <strong>Home Page</strong> that shows your account information:</p>
+
+<ul>
+  <li>Your Cerebro username</li>
+  <li>The groups you belong to</li>
+  <li>The roles you have been granted, and the groups granting you those roles</li>
+  <li>Your access token, including expiration information</li>
+</ul>
+
+<p><em>Tip: you can use CTRL+F or Cmd+F(Mac) to quickly find a group or role name</em></p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/account-details.png" alt="Cerebro Account Details" /></p>
+
+<h3 id="about-dialog">About Dialog</h3>
+<p>The <strong>About</strong> dialog is located at the top right corner next to your username. Click
+<strong>About</strong> to display:</p>
+
+<ul>
+  <li>UI Version</li>
+  <li>Build Hash</li>
+  <li>Planner Version</li>
+  <li>Planner Host/Port</li>
+  <li>REST API Endpoint</li>
+  <li>Authentication Methods Available</li>
+</ul>
+
+<h3 id="copying-your-access-token">Copying your Access token</h3>
+
+<p><strong>Home Page</strong></p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/3425CC6F6F5BD3429E4EEB5A5A2DB47E.png" alt="Cerebro Home Page" /></p>
+
+<p><strong>Quick Access Menu option</strong></p>
+
+<p>Click your username at the top right and click <strong>Copy Access Token</strong>.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/FE79DD2E0FE4901DA2C5E7A34B1C66BA.png" alt="Cerebro Copy Token in Menu" /></p>
+
+<h3 id="datasets-page">Datasets Page</h3>
+
+<p>Click the <strong>DATASETS</strong> navigation tab at the top to access the datasets page.</p>
+
+<p>Use the Datasets page to browse, search, filter, and preview your accessible
+Cerebro datasets. With admin dataset access, enable group access to datasets, and set field
+user group read access.</p>
+
+<p><strong>Any dataset where you have any level of access appears in this list.</strong></p>
+
+<blockquote>
+  <p>:heavy_exclamation_mark: If you have no datasets field read access, there could be
+datasets in the catalog that are not shown.</p>
+</blockquote>
+
+<h3 id="searching-and-filtering-datasets">Searching and Filtering Datasets</h3>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/cerebro_dataset_search.png" alt="Cerebro Datasets Search" /></p>
+
+<p>At the top of the page you can select datasets search and filter options:</p>
+
+<ul>
+  <li><strong>Search box</strong> - Search by dataset name. Any dataset
+name containing your input as a substring is displayed.
+<em>Tip: You can quickly clear this box with the ESC key.</em></li>
+  <li><strong>‘Filter by database’ multi-select box</strong> - Filter the
+list to include only datasets in a particular database or set of databases.</li>
+</ul>
+
+<h3 id="dataset-details">Dataset Details</h3>
+<p>Click a dataset card in the datasets list to display a datasets details page on the
+right side.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/6518533AA6A7DD1767FEA685E56ABF28.png" alt="Cerebro Datasets Details Page" /></p>
+
+<p>This page contains:</p>
+
+<ul>
+  <li>The dataset’s <strong>metadata</strong>, including:
+    <ul>
+      <li>Database name</li>
+      <li>Dataset name</li>
+      <li>Owner</li>
+      <li>Location</li>
+      <li>Description</li>
+      <li>Created - Date and time the dataset was created</li>
+      <li>Metadata Changed - Date and time the metadata was last changed</li>
+      <li>View Definition (if dataset is an external view)</li>
+    </ul>
+  </li>
+  <li>The dataset schema described in full:
+    <ul>
+      <li>Total number of columns in the schema (next to ‘Schema’ tab)</li>
+      <li>Each column in the dataset is shown, including:</li>
+      <li>Name</li>
+      <li>Type</li>
+      <li>Access (whether you have read-access to view the cells in this column)</li>
+      <li>If a column’s name has a gray background, it is a <strong>partitioning column</strong></li>
+      <li><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/C7C78B02F6E027B8F69C4C2BC17BEB04.png" alt="Cerebro partitioning field" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="if-you-do-not-have-access-to-a-column">If you do not have access to a column</h3>
+<p>If your schema looks similar to the table below, it means that you do not
+have access to every column in the schema.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/867E30D8DBBBF1095B3C5A9808D68482.png" alt="Cerebro See Groups" /></p>
+
+<p><strong>To see which groups have access to that column</strong></p>
+
+<ul>
+  <li>Click <strong>See Groups</strong> in the row. A list of groups is displayed.</li>
+  <li>To gain access to the column, you must be added to at least one group</li>
+</ul>
+
+<h3 id="dataset-preview">Dataset preview</h3>
+<p>To preview a dataset, click <strong>Show Preview</strong> in the upper right of the details page.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/5DB6CC99DA0D20DEAF9C7CAB895D7868.png" alt="Cerebro Preview Dataset" /></p>
+
+<ul>
+  <li>No more than 200 rows are shown (to view more, see “Dataset usage” below)</li>
+  <li>Column information with no access is not visible</li>
+  <li>The dialog can scroll vertically and horizontally</li>
+</ul>
+
+<h3 id="get-started-snippets">Get Started snippets</h3>
+<p>To start using this dataset, click <strong>Get Started</strong> on the upper right of the
+ details page.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/03CC8BB78247AEEAB3968F71EE7FD8C1.png" alt="Cerebro Get Started snippets" /></p>
+
+<ul>
+  <li>Sections of different sample code are displayed (Spark, Hive, Python, R and CURL)</li>
+  <li>To start using this dataset click the tab of your choice and copy/paste the code
+into the application.</li>
+</ul>
+
+<h3 id="datasets-with-errors">Datasets with Errors</h3>
+
+<p>In the UI, <strong>Datasets with errors</strong> are those that failed to load due to a problem
+with their metadata (e.g. unsupported datatype). Datasets with errors are listed
+alongside the datasets that loaded properly. Clicking a dataset with
+an error reveals the error message on the details page on the right.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/cerebro_datasets_with_errors.png" alt="Cerebro Datasets with errors" /></p>
+
+<blockquote>
+  <p>:heavy_exclamation_mark: - There may be other datasets with issues in the Cerebro
+deployment. The UI only lists them here if there are metadata errors.
+Problems in view configuration or in the data itself is not visible in the datasets
+page.</p>
+</blockquote>
+
+<h2 id="admin-features">Admin Features</h2>
+<p>If <strong>you have ALL access on a particular object (database or dataset)</strong> in the Cerebro UI,
+you have access to datasets admin features and see this icon: <img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/cerebro_admin_icon_2.png" alt="Cerebro Admin icon" /></p>
+
+<h3 id="review-group-access-on-datasets">Review Group Access on Datasets</h3>
+
+<p>Any databases or datasets with which you have all access, the <strong>Admin</strong> Tab on the datasets
+page is visible.</p>
+
+<p>This:</p>
+
+<ul>
+  <li>Filters the datasets list to only datasets to which you have all access</li>
+  <li>Reveals the <strong>“Review Access”</strong> feature for datasets to which you have Admin Access</li>
+</ul>
+
+<p>Click <strong>Admin</strong> to see a multi-select box under <strong>Review Access</strong>.
+You can select a group or set of groups to see which datasets to which those groups
+have access. You can also filter by database to review group access to
+datasets <strong>only</strong> inside that database.</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/cerebro_review_access_2.png" alt="Cerebro Review Access on Datasets" /></p>
+
+<blockquote>
+  <p>:heavy_exclamation_mark:Only groups with some level of access to the datasets
+  you are admin on will be shown in this multi-select; any group not in the
+  available list has no access to any of the datasets that are visible.</p>
+  <ul>
+    <li>A column is added to every dataset showing whether the group or groups being
+inspected can access any field in the dataset.
+      <ul>
+        <li><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/3537D4FC730C7731B52560C6E5538F69.png" alt="Cerebro lock icon" /> - Selected Group, or set of groups,
+has no access to this dataset</li>
+        <li><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/CD56C394990B38B28A65CBCBAEC6805F.png" alt="Cerebro check icon" /> - Selected Group, or set of groups,
+has <em>some level of access</em> to this dataset</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note:</strong> Access is treated as a logical OR of the groups’ individual access–if any
+  of the selected groups have access to a dataset, you will see a checkmark
+  for that group.</p>
+</blockquote>
+
+<h3 id="review-group-access-on-dataset-schema">Review Group Access on Dataset Schema</h3>
+<p>If you have all access to a particular dataset, you will also see an <strong>Access</strong>
+tab on the dataset details page. There you can inspect which groups have access
+to which fields on a dataset (A similar experience to on the datasets page).
+You see:</p>
+
+<p><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/cerebro_review_schema.png" alt="Cerebro Datasets Details Page" /></p>
+
+<ul>
+  <li>A <strong>multi-select box</strong> where you can select a group or set of groups to see
+which fields in that dataset to which those groups have access. Similar to the Reviewing
+access on the datasets page, only groups with some level of access to the
+dataset are shown in this multi-select.
+    <blockquote>
+      <p>:heavy_exclamation_mark:Any group not shown has no access to this dataset.</p>
+    </blockquote>
+  </li>
+  <li><strong>checkmark</strong> or <strong>lock</strong> icons indicate whether or not the currently selected groups
+have access to the field.
+    <ul>
+      <li><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/3537D4FC730C7731B52560C6E5538F69.png" alt="Cerebro Lock icon" /> - Selected Group or groups has no access to this field</li>
+      <li><img src="https://s3.amazonaws.com/cerebro-data-docs/images-roslyn/CD56C394990B38B28A65CBCBAEC6805F.png" alt="Cerebro check icon" />- Selected Group or groups has <em>some level of access</em>
+(Select or ALL) to this field.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Use the access tab to also <strong>compare two different sets of groups’ access</strong>
+at the same time. Do this by selecting different sets of groups in the two
+different access columns.</p>
+
+<h3 id="logging-out">Logging Out</h3>
+<p>To logout, click your username in the upper right part of the screen.
+Then click “Logout”.</p>
+
+<blockquote>
+  <p>:heavy_exclamation_mark:Your credentials are saved in the browser until
+either your token expires, or you explicitly log out. Be aware of this
+security issue when sharing access to your computer.</p>
+</blockquote>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>The Cerebro team really values your feedback. If you experience a problem
+with a particular aspect of the Web UI, or notice that features do not work
+as described or expected, please take a screenshot or video capture and send it to us.</p>
+
+<p>If possible, click the “About” link in the upper right part of the page
+and take note (e.g. another screenshot) of the details in the dialog that
+pops up. These version numbers help to diagnose and fix issues.</p>
+
+<h4 id="a-note-on-ssl">A note on SSL</h4>
+<p>If Cerebro is configured to run with SSL enabled, the SSL certificate must
+be installed on your local computer for the Web UI to work. If, upon
+navigating to the Web UI, the browser warns that the site is not trusted, this
+is an indicator that the SSL certificate needs to be installed.</p>
+
+<p>On some browsers, it is possible to bypass the SSL security warning. Please
+note that the Cerebro Web UI will likely continue to not work, even in this case,
+with the Login Screen reporting this message:</p>
+
+<blockquote>
+  <p>Could not contact server. Check your network connection and try again later</p>
+</blockquote>
+
+<p>If you see this message, it could mean you need to install the SSL certificate.</p>
+
+<!-- internal link references -->
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2018 Cerebro Data, Inc. All rights reserved. <br />
+ Site last generated: Apr 4, 2018 <br />
+<p><img src="assets/images/cerebro-brain-logo.png" alt="Company logo" style="width: 160px" /></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>
